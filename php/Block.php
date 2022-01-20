@@ -113,12 +113,13 @@ class Block {
 				<?php
 				while ( $query->have_posts() ) :
 					$query->the_post();
-					if ( in_array( $post_id, $post_to_exclude ) ) {
+					if ( in_array( get_the_id(), $post_to_exclude ) ) {
 						continue;
 					}
 					?>
 					<li><?php esc_html_e( get_the_title() ) ?></li><?php
 				endwhile;
+				wp_reset_postdata();
 				?>
 			</ul>
 			</div>
